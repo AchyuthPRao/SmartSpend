@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+// import Navbar from './components/Navbar';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Profile from './components/profile/Profile';
+import About from './components/About';
+import Peer from './components/Peer';
+import SmartInvest from './components/SmartInvest';
+import Expense from './components/Expense';
+import Landing from './components/Landing';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+      <div className="App">
+      
+    <BrowserRouter>
+    <Routes>
+      <Route path='/profile' exact element={<Profile/>} ></Route>
+      <Route path='/' exact element={<Landing />} ></Route>
+      <Route path='/about' exact element={<About />} ></Route>
+      <Route path='/p2p' exact element={<Peer />} ></Route>
+      <Route path='/expense' exact element={<Expense />} ></Route>
+      <Route path='/smartinv' exact element={<SmartInvest />} ></Route>
+    </Routes>
+    </BrowserRouter>
     </div>
+    </>
   );
 }
 
