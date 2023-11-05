@@ -1,5 +1,5 @@
 import './App.css';
-// import Navbar from './components/Navbar';
+import Navbar from './components/Navbar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Profile from './components/profile/Profile';
 import About from './components/About';
@@ -7,6 +7,8 @@ import Peer from './components/Peer';
 import SmartInvest from './components/SmartInvest';
 import Expense from './components/Expense';
 import Landing from './components/Landing';
+import {Auth} from "./pages/auth/index.jsx"
+import {ExpenseTracker} from "./pages/expense-tracker/index.jsx"
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
       
     <BrowserRouter>
     <Routes>
+      <Route path ='/auth' exact element={<Auth />}></Route>
+      <Route path ='/expense-tracker' exact element={<ExpenseTracker />}></Route>
       <Route path='/profile' exact element={<Profile/>} ></Route>
       <Route path='/' exact element={<Landing />} ></Route>
       <Route path='/about' exact element={<About />} ></Route>

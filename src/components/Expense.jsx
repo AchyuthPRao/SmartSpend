@@ -1,9 +1,10 @@
 import React from 'react'
+import { ExpenseTracker } from '../pages/expense-tracker'
 
 export default function Expense() {
   return (
     <div>
-      <h1>Expense</h1>
+      <ExpenseTracker />
     </div>
   )
 }

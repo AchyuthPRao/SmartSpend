@@ -1,19 +1,30 @@
-
+*{
+  font-family: 'Montserrat', sans-serif;
+}
   .rect{
     /* position: absolute; */
     width: 98%;       /* 50% of its parent's width */
-    padding-top: 30%;
+    /* padding-top: 30%; */
     margin: 17px;
     background: linear-gradient(180deg, #26CAA2 0%, #1885A8 100%);
     border-radius: 28px;
   }
   .square{
-    width: 31%;       /* 50% of its parent's width */
+  
+    width: 850px; 
+    height: 500px;      /* 50% of its parent's width */
     padding-top: 26%;
+    /* padding-top: 10px; */
     margin: 17px;
     background: linear-gradient(180deg, #26CAA2 0%, #1885A8 100%);
     border-radius: 33px;
     position: relative;
+    display: flex;
+    flex-direction: row;
+    /* overflow: auto; */
+    overflow:auto;
+    border: black 2px solid;
+    font-weight: bolder;
   }
   .img{
   position: absolute;
@@ -33,7 +44,7 @@
   right: 0px;
   margin-bottom: -12%;
   margin-right: -10%;
-  /* rotate: -10deg; */
+  rotate: -10deg;
   animation: bounce 4s infinite;
   z-index: 1;
 
@@ -64,4 +75,35 @@
   .bot img {
     width: 424px;
   }
+}
+.bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 50px; /* Optional: Add padding for MutualFundsDashboard */
+  overflow-y: auto; /* Enable vertical scrolling when content overflows */
+  height: 100%; /* Allow MutualFundsDashboard to fill the square container */
+}
+
+.mutual-funds-scroll {
+  max-height: 100%; /* Set a maximum height for MutualFundsDashboard */
+}
+.parent{
+  display: flex;
+flex-direction: row;
+}
+.txt{
+  margin-top: 10%;
+  font-size: 3.7em;
+  font-weight: 700;
+  line-height: 1.2em;
+  word-wrap: break-word;
+}
+.invest{
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
