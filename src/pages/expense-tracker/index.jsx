@@ -123,7 +123,7 @@ export const ExpenseTracker = () => {
   onChange={(e) => setDescription(e.target.value)}
 >
   <option value="">Add Transaction</option>
-  <option value="Income(Credit)">Income(Credit)</option>
+  <option value="Income(Credit)">Income</option>
   <option value="Essentials">Essentials</option>
   <option value="Loans">Loans</option>
   <option value="Investments">Investments</option>
@@ -175,6 +175,10 @@ export const ExpenseTracker = () => {
       <div className="d-flex justify-content-center">
           <h3 className="mt-2 boold"> Transactions</h3>
       </div>
+      <div className="mx-3">
+      {/* <canvas ref={chartRef}></canvas> */}
+      </div>
+      
         <ul>
           {transactions.map((transaction) => {
             const { description, transactionAmount, transactionType } =

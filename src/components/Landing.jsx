@@ -3,6 +3,7 @@ import "../App.css"
 import Navbar from './Navbar'
 import Img from '../images/aunty.png'
 import bot from "../images/bot.png"
+import paisa from "../images/paisa.png"
 // import { chartRef } from '../pages/expense-tracker'
 import MutualFundsDashboard from './MutualFunds'
 import { ExpenseTracker } from '../pages/expense-tracker'
@@ -31,7 +32,7 @@ export default function Landing() {
           
         </div>
       </div>
-      
+      <img className='' style={{width:"520px"}} src={paisa} alt="" /> 
          
           </div>
       <img className='bot' src={bot} alt="" /> 
