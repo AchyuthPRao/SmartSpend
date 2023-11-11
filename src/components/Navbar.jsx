@@ -12,8 +12,8 @@ export default function Navbar() {
     <>
        <nav class="navbar navbar-expand-lg bg-body-tertiary " style={inline}>
   <div class="container-fluid " >
-  <Link to='/' style={{textDecoration:'none'}}>
-    <a class="navbar-brand text-white  mx-3" >SmartSpend</a>
+  <Link to='/' style={{textDecoration:'none' , fontWeight: '600'}}>
+    <a style={{textDecoration:'none' , fontWeight: '600'}} class="navbar-brand text-white  mx-3" >SmartSpend</a>
     </Link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

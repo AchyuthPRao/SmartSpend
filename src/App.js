@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useState, useEffect } from "react";
 import Navbar from './components/Navbar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Profile from './components/profile/Profile';
@@ -8,14 +9,16 @@ import SmartInvest from './components/SmartInvest';
 import Expense from './components/Expense';
 import Landing from './components/Landing';
 import {Auth} from "./pages/auth/index.jsx"
-import {ExpenseTracker} from "./pages/expense-tracker/index.jsx"
+import {ExpenseTracker} from "./pages/expense-tracker/index.jsx";
+import ChatApp from './components/ChatApp.js';
 
 
 function App() {
+
   return (
     <>
       <div className="App">
-      
+  
     <BrowserRouter>
     <Routes>
       <Route path ='/auth' exact element={<Auth />}></Route>

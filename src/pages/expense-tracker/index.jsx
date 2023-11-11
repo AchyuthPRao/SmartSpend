@@ -7,8 +7,8 @@ import { useGetUserInfo } from "../../hooks/useGetUserInfo";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
 import { auth } from "../../config/firebase-config";
-import Chart from "chart.js/auto";
 import Navbar from "../../components/Navbar";
+import MyPieChart from "../../components/MyPieChart";
 
 export const ExpenseTracker = () => {
   const { addTransaction } = useAddTransaction();
@@ -36,52 +36,20 @@ export const ExpenseTracker = () => {
     setDescription("");
     setTransactionAmount("");
   };
-  const dates = expensesData.map((transaction) => transaction.createdAt);
-  const expenseAmounts = expensesData.map(
-    (transaction) => transaction.transactionAmount
-  );
+
 
   // Get the canvas reference to render the chart
-  const chartRef = useRef(null);
+  const pieChartData = {
+    labels: ["Income", "Expenses"],
+    datasets: [
+      {
+        data: [income, expenses],
+        backgroundColor: ["green", "red"],
+      },
+    ],
+  };
 
-  useEffect(() => {
-    if (dates.length > 0 && chartRef.current) {
-      const ctx = chartRef.current.getContext("2d");
-      new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: dates,
-          datasets: [
-            {
-              label: "Expenses over Time",
-              data: expenseAmounts,
-              borderColor: "rgba(255, 99, 132, 1)",
-              backgroundColor: "rgba(255, 99, 132, 0.2)",
-            },
-          ],
-        },
-        options: {
-          scales: {
-            x: [
-              {
-                type: "time",
-                time: {
-                  unit: "day", // You can customize the time unit
-                },
-              },
-            ],
-            y: [
-              {
-                ticks: {
-                  callback: (value) => `Rs:Rs:{value}`, // Format y-axis labels
-                },
-              },
-            ],
-          },
-        },
-      });
-    }
-  }, [dates, expenseAmounts]);
+ 
 
   const signUserOut = async () => {
     try {
@@ -99,46 +67,26 @@ export const ExpenseTracker = () => {
       <div className="expense-tracker rect">
         <div className="container m-3 d-flex justify-content-center align-items-center">
           <div className="d-flex justify-content-center ">
-          <h1> {name}'s Expense Tracker</h1>
+          <h1 style={{fontWeight:'900'}}> {name}'s Expense Tracker</h1>
           </div>
           <div className="balance mx-5 boold">
             <h3 className="boold"> Your Balance</h3>
-            {balance >= 0 ? <h2> Rs:{balance}</h2> : <h2> -Rs:{balance * -1}</h2>}
+            {balance >= 0 ? <h2 style={{fontWeight:'700'}}> Rs:{balance}</h2> : <h2  > -Rs:{balance * -1}</h2>}
           </div>
           <div className="summary mx-5">
             <div className="income mx-5">
               <h4 className="text-white"> Income</h4>
-              <p className="boold fs-3">Rs:{income}</p>
+              <p className="boold fs-3" style={{fontWeight:'700'}}>Rs:{income}</p>
             </div>
             <div className="expenses mx-5">
               <h4 className="text-white"> Expenses</h4>
-              <p className="boold fs-3">Rs:{expenses}</p>
+              <p className="boold fs-3" style={{fontWeight:'700'}}>Rs:{expenses}</p>
             </div>
           </div>
-          <form className="add-transaction mx-5" onSubmit={onSubmit}>
-          <select
-  className="my-2 rounded batan"
-  value={description}
-  required
-  onChange={(e) => setDescription(e.target.value)}
->
-  <option value="">Add Transaction</option>
-  <option value="Income(Credit)">Income</option>
-  <option value="Essentials">Essentials</option>
-  <option value="Loans">Loans</option>
-  <option value="Investments">Investments</option>
-  <option value="Misc">Misc</option>
-  
-</select>
-            <input
-             className="my-2 rounded bordet"
-              type="number"
-              placeholder="Amount"
-              value={transactionAmount}
-              required
-              onChange={(e) => setTransactionAmount(e.target.value)}
-            />
-            <input
+          
+          <div className="rediyo">
+          <h3 className="d-block" style={{fontWeight:'600'}}>Transaction Type:</h3>
+          <input
              className="mx-1 form-check-input text-white"
               type="radio"
               id="expense"
@@ -146,34 +94,106 @@ export const ExpenseTracker = () => {
               checked={transactionType === "expense"}
               onChange={(e) => setTransactionType(e.target.value)}
             />
-            <label className="text-white fs-5" htmlFor="expense"> Expense</label>
+            <label className="text-white fs-5 my-1" htmlFor="expense"> Expense</label>
+            <div className="rediyo">
+          <input
+             className="mx-1 form-check-input text-white"
+              type="radio"
+              id="investments"
+              value="investments"
+              checked={transactionType === "investments"}
+              onChange={(e) => setTransactionType(e.target.value)}
+            />
+            <label className="text-white fs-5 my-1 mx-1" htmlFor="expense"> Investment</label>
+            </div>
             <input
-             className="mx-3 form-check-input"
+             className="mx-1 form-check-input"
               type="radio"
               id="income"
               value="income"
               checked={transactionType === "income"}
               onChange={(e) => setTransactionType(e.target.value)}
             />
-            <label className="text-white fs-5" htmlFor="income"> Income</label>
+            <label className="text-white fs-5 my-1" htmlFor="income"> Income</label>
+          </div>
+         
+        
+          <form className="add-transaction mx-5" onSubmit={onSubmit}>
+          {transactionType === "expense" ? (
+          <select
+  className="my-2 rounded batan"
+  value={description}
+  required
+  onChange={(e) => setDescription(e.target.value)}
+>
+  <option value="">Add Transaction</option>
+  <option value="Groceries">Groceries</option>
+  <option value="Bills">Bills</option>
+  <option value="Essentials">Essentials</option>
+  <option value="Outings">Outings</option>
+  <option value="Misc">Misc</option>
+  
+</select> ): transactionType === "income" ? (
+  <select
+  className="my-2 rounded batan"
+  value={description}
+  required
+  onChange={(e) => setDescription(e.target.value)}
+>
+  <option value="">Add Transaction</option>
+  <option value="Salary">Salary</option>
+  <option value="Business">Business(Revenue)</option>
+  <option value="Rental Income">Rental Income</option>
+  <option value="Return on Investments">ROI</option>
+  <option value="Misc">Misc</option>
+  
+</select>
+
+) : (
+  <select
+  className="my-2 rounded batan"
+  value={description}
+  required
+  onChange={(e) => setDescription(e.target.value)}
+>
+  <option value="">Add Transaction</option>
+  <option value="Stocks">Stocks</option>
+  <option value="Real Estate">Real Estate</option>
+  <option value="Gold">Gold</option>
+  <option value="Bonds">Bonds</option>
+  <option value="Mutual Funds">Mutual Funds</option>
+  <option value="Misc">Misc</option>
+</select>
+)}
+            <input
+             className="my-2 rounded bordet"
+              type="number"
+              inputMode="none"
+              placeholder="Amount"
+              value={transactionAmount}
+              required
+              onChange={(e) => setTransactionAmount(e.target.value)}
+            />
+            
 
             <button className="my-3 mx-4 rounded  button2" type="submit"> Add Transaction</button>
           </form>
           {profilePhoto && (
           <div className="profile">
             {" "}
-            <img className="profile-photo mx-5" src={profilePhoto} />
-            <button className=" mt-3 mx-1 button2" onClick={signUserOut}>
+            <img className="profile-photo " src={profilePhoto} />
+            <button className="mt-3 button2" onClick={signUserOut}>
               Sign Out
             </button>
           </div>
         )}
         </div>
       </div>
-      
+      <div className="donut mx-4">
+      <MyPieChart/>
       <div className="transactions rect2">
       <div className="d-flex justify-content-center">
-          <h3 className="mt-2 boold"> Transactions</h3>
+          <h3 className="my-3 boold" style={{fontWeight:'800'}}> Transactions</h3>
       </div>
       <div className="mx-3">
       {/* <canvas ref={chartRef}></canvas> */}
@@ -185,12 +205,12 @@ export const ExpenseTracker = () => {
               transaction;
             return (
               <li>
-                <h4 className="mx-2"> {description} </h4>
-                <p className="boold">
+                <h4 className="mx-2" style={{fontWeight:'700'}}> {description} </h4>
+                <p className="mx-2 boold fs-4">
                   Rs:{transactionAmount} •{" "}
                   <label
                     style={{
-                      color: transactionType === "expense" ? "red" : "white",
+                      color: transactionType === "expense" ? "red" : transactionType === "income" ? "green" : transactionType === "investments" ? "yellow" : " "
                     }}
                   >
                     {" "}
@@ -203,6 +223,10 @@ export const ExpenseTracker = () => {
         </ul>
         
       </div>
+      </div>
+    
+     
+      
     </>
   );
 };

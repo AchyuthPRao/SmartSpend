@@ -1,13 +1,15 @@
 import React from 'react'
 import "../peer.css"
 import Navbar from './Navbar'
+import ChatApp from './ChatApp'
+
 
 
 export default function Peer() {
   return (
     <div>
     <Navbar />
-     <div className="container">
+     {/* <div className="container">
       <div className="msg-header">
         <div className="container1">
         <i class="bi bi-person-circle "  style={{ fontSize: '2rem' ,color: 'black' }}></i>
@@ -100,7 +102,8 @@ export default function Peer() {
           </div>
         </div>
       </div>
-    </div>
+  </div> */}
+    <ChatApp />
     </div>
   )
 }

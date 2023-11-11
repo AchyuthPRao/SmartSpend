@@ -6,11 +6,10 @@ export default function About() {
   return (
     <>
     <Navbar />
-    <h1 className="about" style={{padding: "20px"}}>About Us</h1>
+    <h1 className="about boold mx-3" style={{padding: "20px"}}>About Us</h1>
         
-        
-  <div className="accordion" id="accordionExample">
-  <div className="accordion-item">
+  <div className="accordion mx-3 p-2" id="accordionExample">
+  <div className="accordion-item ">
     <h2 className="accordion-header">
       <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
        What are we?
@@ -42,7 +41,14 @@ export default function About() {
     </h2>
     <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
       <div className="accordion-body">
-        <strong>You can contact at: </strong>
+        <strong>You can contact us at: 
+          <br />
+          achyuthprao123@gmail.com
+          <br />
+          shenoy.saakshi910@gmail.com
+          <br />
+          shreyasnaik31@gmail.com
+        </strong>
       </div>
     </div>
   </div>

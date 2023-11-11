@@ -13,15 +13,15 @@ function MutualFundsDashboard() {
 
   return (
     <div className='bottom-right'>
-      <h1 className='d-flex justify-content-center'>Top Business News Headlines</h1>
-      <ul>
+      <h1 id='k' className='d-flex justify-content-center' style={{fontWeight: '600'}}>Top Business News Headlines</h1>
+      <ol>
         {newsData.map((article, index) => (
           <li key={index}>
-            <a href={article.url} target="_blank" rel="noopener noreferrer">
+            <a  href={article.url} target="_blank" rel="noopener noreferrer" >
               <img className='imgn' src={article.urlToImage} alt={article.title} />
             </a>
             <h2>
-              <a href={article.url} target="_blank" rel="noopener noreferrer">
+              <a style={{textDecoration:'none' , color:'white'}} href={article.url} target="_blank" rel="noopener noreferrer">
                 {article.title}
               </a>
             </h2>
@@ -29,7 +29,7 @@ function MutualFundsDashboard() {
             <p>Published on: {new Date(article.publishedAt).toLocaleString()}</p>
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 }

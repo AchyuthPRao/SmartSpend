@@ -8,7 +8,9 @@ import paisa from "../images/paisa.png"
 import MutualFundsDashboard from './MutualFunds'
 import { ExpenseTracker } from '../pages/expense-tracker'
 import { Auth } from '../pages/auth'
-import Graph from './Graph'
+import MyPieChart from './MyPieChart'
+// import Graph from './Graph'
+
 
 
 export default function Landing() {
@@ -17,9 +19,9 @@ export default function Landing() {
       <Navbar />
       <div className="parent rect">
        <div className="">
-        <Graph />
+        {/* <Graph /> */}
         </div>
-        <div className="txt ">
+        <div className="txt mx-3 text-white" style={{fontWeight:'900'}}>
           Track Your Expenses on the go with SmartSpend!
         </div>
       </div>
@@ -32,7 +34,7 @@ export default function Landing() {
           
         </div>
       </div>
-      <img className='' style={{width:"520px"}} src={paisa} alt="" /> 
+      <img className='' style={{width:"540px"}} src={paisa} alt="" /> 
          
           </div>
       <img className='bot' src={bot} alt="" /> 

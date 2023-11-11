@@ -4,6 +4,9 @@ import { signInWithPopup } from "firebase/auth";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useGetUserInfo } from "../../hooks/useGetUserInfo";
 import "./styles.css";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
 
 export const Auth = () => {
   const navigate = useNavigate();
