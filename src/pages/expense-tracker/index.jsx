@@ -3,16 +3,36 @@ import { useState , useEffect ,useRef } from "react";
 import { signOut } from "firebase/auth";
 import { useAddTransaction } from "../../hooks/useAddTransaction";
 import { useGetTransactions } from "../../hooks/useGetTransactions";
+import { useGetCreatedAt } from "../../hooks/useGetCreatedAt";
 import { useGetUserInfo } from "../../hooks/useGetUserInfo";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
 import { auth } from "../../config/firebase-config";
 import Navbar from "../../components/Navbar";
 import MyPieChart from "../../components/MyPieChart";
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../config/firebase-config'; // Import your Firebase config
+
+
+
+async function FetchDataFire() {
+  const querySnapShot = await getDocs(collection(db, "transactions"))
+
+  const data = [];
+  querySnapShot.forEach((doc) => {
+    data.push({ id: doc.id, ...doc.data() });
+  });
+  return data;
+}
+
+
+
+
 
 export const ExpenseTracker = () => {
   const { addTransaction } = useAddTransaction();
   const { transactions, transactionTotals } = useGetTransactions();
+  // const createdAtData = useGetCreatedAt();
   const { name, profilePhoto } = useGetUserInfo();
   const navigate = useNavigate();
   const expensesData = transactions.filter(
@@ -22,9 +42,20 @@ export const ExpenseTracker = () => {
   const [description, setDescription] = useState("");
   const [transactionAmount, setTransactionAmount] = useState(0);
   const [transactionType, setTransactionType] = useState("expense");
-
+  const[date, setDate] = useState("");
   const { balance, income, expenses } = transactionTotals;
 
+  const [userData, setUserData] = useState([]);
+
+  useEffect(() => {
+    async function FetchData() {
+      const data = await FetchDataFire();
+      setUserData(data);
+    }
+    FetchData();
+  }, []);
+
+// console.log(created_at);
   const onSubmit = (e) => {
     e.preventDefault();
     addTransaction({
@@ -39,17 +70,12 @@ export const ExpenseTracker = () => {
 
 
   // Get the canvas reference to render the chart
-  const pieChartData = {
-    labels: ["Income", "Expenses"],
-    datasets: [
-      {
-        data: [income, expenses],
-        backgroundColor: ["green", "red"],
-      },
-    ],
-  };
+
 
  
+
+
+
 
   const signUserOut = async () => {
     try {
@@ -60,6 +86,15 @@ export const ExpenseTracker = () => {
       console.error(err);
     }
   };
+
+  // const dateData = 
+  //   [userData.map((user) => (
+  //      <div key={user.id}></div>,
+  //       // user.transactionType
+  //       `${new Date(user.createdAt.seconds * 1000 + user.createdAt.nanoseconds / 1e6).toLocaleString()}`
+  //   )),
+  //   ]
+  // ;
 
   return (
     <>
@@ -169,7 +204,7 @@ export const ExpenseTracker = () => {
              className="my-2 rounded bordet"
               type="number"
               inputMode="none"
-              placeholder="Amount"
+              placeholder="Amount(Rs)"
               value={transactionAmount}
               required
               onChange={(e) => setTransactionAmount(e.target.value)}
@@ -201,7 +236,7 @@ export const ExpenseTracker = () => {
       
         <ul>
           {transactions.map((transaction) => {
-            const { description, transactionAmount, transactionType } =
+            const { description, transactionAmount, transactionType, formattedCreatedAt   } =
               transaction;
             return (
               <li>
@@ -210,18 +245,22 @@ export const ExpenseTracker = () => {
                   Rs:{transactionAmount} •{" "}
                   <label
                     style={{
-                      color: transactionType === "expense" ? "red" : transactionType === "income" ? "green" : transactionType === "investments" ? "yellow" : " "
+                      color: transactionType === "expense" ? "rgba(139, 0, 0, 1)" : transactionType === "income" ? "green" : transactionType === "investments" ? "rgba(223, 180, 12, 1)" : " "
                     }}
                   >
+                 {formattedCreatedAt}
                     {" "}
                     {transactionType}{" "}
+                    {/* <p></p> */}
+                    {/* console.log(getCreatedAtData); */}
                   </label>
                 </p>
+            
               </li>
             );
           })}
         </ul>
-        
+       
       </div>
       </div>
     

@@ -38,16 +38,21 @@ export const useGetTransactions = () => {
         snapshot.forEach((doc) => {
           const data = doc.data();
           const id = doc.id;
+          const formattedCreatedAt =
+          data.createdAt && data.createdAt.seconds
+            ? new Date(
+                data.createdAt.seconds * 1000 +
+                  data.createdAt.nanoseconds / 1e6
+              ).toLocaleString()
+            : null;
 
-          docs.push({ ...data, id });
+          docs.push({ ...data, id, formattedCreatedAt });
 
           if (data.transactionType === "expense") {
             totalExpenses += Number(data.transactionAmount);
           } else {
             totalIncome += Number(data.transactionAmount);
           }
-
-          
         });
 
         setTransactions(docs);
@@ -65,6 +70,7 @@ export const useGetTransactions = () => {
 
     return () => unsubscribe();
   };
+  
 
   useEffect(() => {
     getTransactions();

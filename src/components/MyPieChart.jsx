@@ -78,13 +78,16 @@ const MyPieChart = () => {
   // Extract transaction types and amounts for chart data
   const chartData = {
     labels: userData.map((user) => (
-       <div key={user.id}></div>
-        ,user.transactionType )),
+       <div key={user.id}></div>,
+        // user.transactionType
+        `${user.transactionType} - ${new Date(user.createdAt.seconds * 1000 + user.createdAt.nanoseconds / 1e6).toLocaleString()}`
+    )),
     datasets: [
       {
-        data: userData.map((user) => user.transactionAmount),
+        data: userData.map((user) => user.transactionAmount,
+        ),
         backgroundColor: userData.map((user) =>
-        user.transactionType === 'expense' ? 'rgba(255, 0, 0)' : user.transactionType === 'investments' ? 'rgba(255, 220, 0, 1)' : 'rgba(0, 128, 0)' 
+        user.transactionType === 'expense' ? 'rgba(255, 0, 0)' : user.transactionType === 'investments' ? 'rgba(255, 220, 0, 1)' : 'rgba(0, 128, 0)' ,
       ),
       },
     ],
@@ -102,7 +105,7 @@ const MyPieChart = () => {
         options={{
             plugins: {
                 legend: {
-                    display: false, // Set to false to hide labels
+                    display: false, // Set to false to hide legends
                   },
               },
           aspectRatio: 1

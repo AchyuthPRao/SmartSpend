@@ -35,34 +35,8 @@ export default function SmartInvest() {
     <>
       <Navbar />
       <div className="parent2">
-       {/* <div className="rect3">
-        {userData.map((user) => (
-          <div key={user.id} className='contentInv'>
-            {user.transactionType === "income" ? (
-             <h5 >Amount Invested </h5>
-            ): "" }
-            {user.transactionType === "income" ? (
-              <>
-               <p>Income:{user.transactionAmount}</p>
-               </>
-            ) : (
-              <>
-              </>
-            )
-            }
-            {user.transactionType === "income" ? (
-             ( Math.floor(user.transactionAmount*0.03) <= 500 ) ? (
-              <>
-              <p>Invested:{Math.floor(user.transactionAmount*0.03)}</p>
-              </>
-             ): (<h6>Amount too large</h6> )
-            ) : ""
-            } 
-          </div>
-        ))}
-      </div> */}
       <div className="rect3">
-        <h1>{name}'s Smart Investments</h1>
+        <h1 style={{fontWeight:'800'}}>{name}'s Smart Investments</h1>
   <table className="contentInvTable">
     <thead>
       <tr>
@@ -85,7 +59,7 @@ export default function SmartInvest() {
                 )}
               </td>
               <td >
-              {Math.floor(user.transactionAmount * 0.03) <= 500  ? (<><h6>Amount Invested</h6></>) : (<h6 id='h'>Amount Not Invested</h6>) }
+              {Math.floor(user.transactionAmount * 0.03) <= 500  ? (<><h6 style={{color:'rgba(0, 255, 0, 1)'}}>Amount Invested</h6></>) : (<h6 id='h'>Amount Not Invested</h6>) }
                 </td>
             </>
           ) : null}

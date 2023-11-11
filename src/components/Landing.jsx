@@ -34,10 +34,10 @@ export default function Landing() {
           
         </div>
       </div>
-      <img className='' style={{width:"540px"}} src={paisa} alt="" /> 
+      <img className='' style={{width:"650px"}} src={paisa} alt="" /> 
          
           </div>
-      <img className='bot' src={bot} alt="" /> 
+      {/* <img className='bot' src={bot} alt="" />  */}
       {/* <canvas ref={chartRef}></canvas> */}
       
       {/* <Auth />  */}
