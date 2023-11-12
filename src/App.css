@@ -1,10 +1,12 @@
 *{
   font-family: 'Inter', sans-serif;
 }
+
 .nev{
   width: 100%;
-
 }
+
+
 @media  (max-width: 768px){
   .nev {
     font-size: 0.5em;
@@ -40,6 +42,7 @@
     border: black 2px solid;
 
   }
+  
   @media (max-width: 768px) {
     .square .parent {
         flex-direction: row;

@@ -1,0 +1,112 @@
+*{
+    font-family: 'Inter', sans-serif;
+}
+
+
+@media (max-width: 768px) {
+  .nev{
+    width: 100%;
+  }
+}
+
+.parent2{
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .parent2{
+        width: fit-content;
+    }
+  }
+
+ @media (min-width: 768px) and (max-width: 1024px) {
+    .parent2{
+      width: fit-content; 
+       display: grid;
+      justify-content: center;
+      align-items: center;
+  }
+  } 
+
+.txt{
+    padding: 20px;
+    font-size: 3.7em;
+    font-weight:800;
+    line-height: 1.2em;
+  }
+
+.rect3{
+    width: 100%;
+    padding: 2%;
+    margin: 2%;
+    background: linear-gradient(180deg, #26CAA2 0%, #1885A8 100%);
+    border-radius: 28px;
+    border: 3px solid #023047;
+  }
+
+  @media (max-width: 767px) {
+    .rect3 {
+      width: fit-content;
+    }
+} 
+@media (min-width: 768px) and (max-width: 1024px) {
+  .rect3 {
+    width: fit-content;
+  }
+}
+
+.contentInv{
+    color:#fff;
+    display: flex;
+    gap: 2%;
+  }
+
+.contentInvTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+@media (max-width: 768px) {
+    .contentInv{
+        padding: 30%;
+    } 
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .contentInv{
+    padding: 30%;
+} 
+}
+
+.contentInvTable th, .contentInvTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+.contentInvTable th {
+    background-color: #f2f2f2;
+  }
+
+#h{
+     color: rgb(122, 15, 15);
+  }
+
+  @media (max-width: 768px) {
+    .invest {
+        display: none;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .invest {
+      font-size: small;
+  }
+  }
+
+   @media (max-width: 768px){
+   .contentInvTable{
+        font-weight: 400;
+    }
+} 
