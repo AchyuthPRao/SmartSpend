@@ -21,7 +21,7 @@ export const AppWrapper = ({ children, isAuth, setIsAuth, setIsInChat }) => {
 
       <div className="app-container">{children}</div>
       {isAuth && (
-        <div className="sign-out">
+        <div className="sign-out d-grid mx-auto">
           <button className="butin" onClick={signUserOut}> Sign Out</button>
         </div>
       )}

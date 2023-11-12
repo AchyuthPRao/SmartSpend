@@ -14,7 +14,6 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../config/firebase-config'; // Import your Firebase config
 
 
-
 async function FetchDataFire() {
   const querySnapShot = await getDocs(collection(db, "transactions"))
 
@@ -24,10 +23,6 @@ async function FetchDataFire() {
   });
   return data;
 }
-
-
-
-
 
 export const ExpenseTracker = () => {
   const { addTransaction } = useAddTransaction();
@@ -70,12 +65,6 @@ export const ExpenseTracker = () => {
 
 
   // Get the canvas reference to render the chart
-
-
- 
-
-
-
 
   const signUserOut = async () => {
     try {
@@ -232,7 +221,7 @@ export const ExpenseTracker = () => {
       </div>
       <div className="mx-3">
       {/* <canvas ref={chartRef}></canvas> */}
-      </div>
+       </div>
       
         <ul>
           {transactions.map((transaction) => {
@@ -253,7 +242,7 @@ export const ExpenseTracker = () => {
                     {transactionType}{" "}
                     {/* <p></p> */}
                     {/* console.log(getCreatedAtData); */}
-                  </label>
+                   </label>
                 </p>
             
               </li>
@@ -262,9 +251,10 @@ export const ExpenseTracker = () => {
         </ul>
        
       </div>
-      </div>
-    
-     
+      </div> *
+
+
+      
       
     </>
   );
