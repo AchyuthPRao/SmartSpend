@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <>
        <nav class="navbar navbar-expand-lg bg-body-tertiary " style={inline}>
-  <div class="container-fluid " >
+  <div class="container-fluid nev" >
   <Link to='/' style={{textDecoration:'none' , fontWeight: '600'}}>
     <a style={{textDecoration:'none' , fontWeight: '600'}} class="navbar-brand text-white  mx-3" >SmartSpend</a>
     </Link>

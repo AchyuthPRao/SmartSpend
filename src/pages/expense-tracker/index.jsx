@@ -224,7 +224,7 @@ export const ExpenseTracker = () => {
         )}
         </div>
       </div>
-      <div className="donut mx-4">
+      <div className="donut mx-4 ">
       <MyPieChart/>
       <div className="transactions rect2">
       <div className="d-flex justify-content-center">

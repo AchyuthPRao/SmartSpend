@@ -1,94 +1,84 @@
 *{
   font-family: 'Inter', sans-serif;
 }
+.nev{
+  width: 100%;
+
+}
+@media  (max-width: 768px){
+  .nev {
+    font-size: 0.5em;
+    align-items: center;
+    height: auto;
+    text-align: center;
+     }
+}
   .rect{
-    /* position: absolute; */
-    width: 98%;       /* 50% of its parent's width */
-    /* padding-top: 30%; */
-    margin: 17px;
+    width: 90%;    
+    margin: 2%;
     background: linear-gradient(180deg, #26CAA2 0%, #1885A8 100%);
     border-radius: 28px;
   }
+  @media (max-width: 768px) {
+    .rect .txt {
+        font-size: 1.2em;
+        font-weight: 400; 
+        height: auto;
+    }
+}
   .square{
-  
-    width: 850px; 
-    height: 500px;      /* 50% of its parent's width */
-    padding-top: 26%;
-    /* padding-top: 10px; */
-    margin: 17px;
+    width: 90%; 
+    height: 500px;
+    max-width: 850px; 
+    margin:2%;
     background: linear-gradient(180deg, #26CAA2 0%, #1885A8 100%);
     border-radius: 33px;
     position: relative;
     display: flex;
     flex-direction: row;
-    /* overflow: auto; */
     overflow:auto;
     border: black 2px solid;
-    /* font-weight: bolder; */
+
   }
-  
+  @media (max-width: 768px) {
+    .square .parent {
+        flex-direction: row;
+        font-size: 1em; /* Change to column layout on smaller screens */
+        /* height: 700px; */
+    }
+}
+.paisa{
+  width:650px;
+}
+@media (max-width: 768px) {
+  .paisa {
+      display: none;/* Change to column layout on smaller screens */
+  }
+}
   .img{
   position: absolute;
   top: 2%;
   left: 2%;
   width: 95%;
-  /* height: 50%; */
-  /* padding-top: 26%; */
   height: 95%;
   padding: 2%;
   object-fit: contain;
 
   }
+
   .imgn{
     align-items: center;
   }
-  .bot{
-    position: fixed;
-  bottom: 0px;
-  right: 0px;
-  margin-bottom: -12%;
-  margin-right: -10%;
-  rotate: -10deg;
-  animation: bounce 4s infinite;
-  z-index: 1;
-
-  }
-  @keyframes bounce {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-  
-@media screen and (max-width: 600px) {
-  .bot img {
-    width: 180px;
-  }
-}
-
-@media screen and (min-width: 601px) and (max-width: 1200px) {
-  .bot img {
-    width: 300px;
-  }
-}
-
-@media screen and (min-width: 1201px) {
-  .bot img {
-    width: 424px;
-  }
-}
 .bottom-right {
   position: absolute;
   bottom: 0;
   right: 0;
   left: 0;
-  padding: 20px; /* Optional: Add padding for MutualFundsDashboard */
-  overflow-y: auto; /* Enable vertical scrolling when content overflows */
-  height: 100%; /* Allow MutualFundsDashboard to fill the square container */
+  padding: 20px;
+  overflow-y: auto; 
+  height: 100%; 
 }
+
 #k{
   margin-bottom: 3%;
 }
@@ -99,21 +89,17 @@
 .parent{
   display: flex;
 flex-direction: row;
+/* flex-wrap: wrap; */
 }
 .txt{
   padding: 20px;
   font-size: 3.7em;
   font-weight:800;
   line-height: 1.2em;
-  /* word-wrap: break-word; */
-}
-.invest{
-  /* height: min-content; */
 }
 .rect3{
   width: 50%;     
   padding: 2%;
-  /* margin: 17px; */
   margin: 2%;
   background: linear-gradient(180deg, #26CAA2 0%, #1885A8 100%);
   border-radius: 28px;
@@ -121,15 +107,12 @@ flex-direction: row;
 }
 .parent2{
   display: flex;
-  /* align-items: center; */
   justify-content: center;
 }
 .contentInv{
-  /* text-align:center; */
   color:#fff;
   display: flex;
   gap: 2%;
-  /* margin: 3%; */
 }
 .contentInvTable {
   width: 100%;
@@ -139,19 +122,14 @@ flex-direction: row;
 
 .contentInvTable th, .contentInvTable td {
   border: 1px solid #ddd;
-  
   padding: 8px;
   text-align: left;
 }
-
 .contentInvTable th {
   background-color: #f2f2f2;
 }
-
 .contentInvTable  {
-  /* color: rgb(122, 15, 15); */
   margin: 0;
- 
 }
 #h{
    color: rgb(122, 15, 15);

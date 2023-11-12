@@ -34,7 +34,7 @@ export default function Landing() {
           
         </div>
       </div>
-      <img className='' style={{width:"650px"}} src={paisa} alt="" /> 
+      <div className="paisa"><img className='paisa'  src={paisa} alt="" /> </div>
          
           </div>
       {/* <img className='bot' src={bot} alt="" />  */}
