@@ -1,3 +1,9 @@
+
+![Screenshot 2023-12-11 130220](https://github.com/AchyuthPRao/SmartSpend/assets/108856697/d5716da6-3d30-4578-b74a-2a4dc3a40c46)
+
+![Screenshot 2023-12-11 130156](https://github.com/AchyuthPRao/SmartSpend/assets/108856697/bf6b531b-0a4c-4126-bc31-d15289de74db)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
